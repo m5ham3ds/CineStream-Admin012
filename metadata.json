@@ -1,0 +1,8 @@
+{
+  "name": "CineStream Admin Center",
+  "description": "A Jetpack Compose admin panel to manage CineStream users, streaming sources, moderation, DRM settings, and real-time push notifications.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,43 @@
+name: Build Android App
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: gradle
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
+    - name: Decode debug.keystore
+      run: |
+        echo "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" | base64 -d > debug.keystore
+
+    - name: Build Debug APK
+      run: ./gradlew assembleDebug
+
+    - name: Rename APK
+      run: |
+        mv app/build/outputs/apk/debug/app-debug.apk "CineStream Admin.apk"
+
+    - name: Upload APK Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: CineStream Admin
+        path: "CineStream Admin.apk"
